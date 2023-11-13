@@ -1,0 +1,1063 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="http://localhost:8080/coreigniter_4/css/style.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+</head>
+
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+        min-height: 100vh;
+        width: 100%;
+
+    }
+
+    .sidebar {
+        display: none;
+
+        position: fixed;
+        height: 100%;
+        width: 240px;
+        background: #001c4f;
+        /* transition: all 0.5s ease; */
+    }
+
+    .sidebar .active {
+        width: 60px;
+    }
+
+    .sidebar .logo_details {
+        height: 80px;
+        width: 100%;
+        display: flex;
+        align-items: center;
+
+    }
+
+    .sidebar .logo_details svg {
+        font-size: 28px;
+        font-weight: 500;
+        color: #fff;
+        min-width: 60px;
+        text-align: center;
+    }
+
+    .sidebar .logo_details .logo_name {
+        font-size: 24px;
+        font-weight: 500;
+        color: #fff;
+        margin-left: 30px;
+    }
+
+    .sidebar .nav-links {
+        margin-top: 16px;
+    }
+
+    .sidebar .nav-links li {
+        height: 50px;
+        width: 116%;
+        list-style: none;
+        margin-left: -16%;
+
+    }
+
+    .sidebar .nav-links li a {
+        height: 100%;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        text-decoration: none;
+        transition: all 0.4s ease;
+
+    }
+
+    .sidebar .nav-links li a:hover {
+        background-color: #546c98;
+    }
+
+    .sidebar .nav-links li a svg {
+        color: rgb(255, 255, 255);
+        min-width: 60px;
+        text-align: center;
+        font-size: 18px;
+    }
+
+    .sidebar .nav-links li a .link-name {
+        color: #fff;
+        font-size: 15px;
+        font-weight: 400;
+        white-space: nowrap;
+    }
+
+
+
+    /* Home-section css */
+
+    .home-section {
+        background: #f5f5ff;
+        /* position: relative; */
+        /* min-height: 100vh; */
+        left: calc(100% - 240px);
+        left: 240px;
+    }
+
+    .home-section nav {
+        height: 55px;
+        background: whitesmoke;
+        padding: 0 20px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+    }
+
+    .home-section nav .sidebar-button {
+        display: flex;
+        align-items: center;
+        font-size: 24px;
+        font-weight: 500;
+    }
+
+    .home-section nav .sidebar-button svg {
+        font-size: 35px;
+        margin-right: 10px;
+    }
+
+    .home-section nav .search-box {
+        height: 50px;
+        width: 550px;
+        margin: 0 20px;
+        position: relative;
+    }
+
+    nav .search-box input {
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        border-radius: 6px;
+        padding: 0 15px;
+        font-size: 17px;
+        color: #000000;
+        background: #F5F6FA;
+        border: 2PX solid #efeef1;
+        outline: none;
+    }
+
+    nav .search-box svg {
+        position: absolute;
+        right: 5px;
+        top: 50%;
+        transform: translateY(-50%);
+        height: 22px;
+        width: 40px;
+        /* background: #2697ff; */
+        border-radius: 6px;
+        color: #000000;
+        font-size: 22px;
+        line-height: 40px;
+        text-align: center;
+    }
+
+    .home-section nav .profile-details {
+        display: flex;
+        align-items: center;
+        height: 50px;
+        min-width: 139px;
+        background: #F5F6FA;
+        border: 2px solid#efeef1;
+        border-radius: 6px;
+        padding: 0 15px 0 2px;
+    }
+
+    nav .profile-details img {
+        height: 40px;
+        width: 40px;
+        object-fit: cover;
+        border-radius: 6px;
+    }
+
+    nav .profile-details .admin_name {
+        font-size: 15px;
+        font-weight: 500;
+        color: #333;
+        margin: 0 10px;
+        white-space: nowrap;
+
+    }
+
+    nav .profile-details svg {
+        color: #333;
+        font-size: 25px;
+    }
+
+    nav .user-details {
+        display: flex;
+    }
+
+    .search-bar {
+        display: none;
+    }
+
+    .user-list {
+        background: whitesmoke;
+        border-radius: 2%;
+        text-align: center;
+    }
+
+    @media (max-width:550px) {
+        nav .profile-details img {
+            height: 30px;
+            width: 30px;
+            margin-left: 16%;
+            object-fit: cover;
+            border-radius: 6px;
+        }
+
+        .dropdown-menu {
+            left: -102px;
+
+        }
+
+        .Dashbord .user-list {
+            font-size: 20px;
+        }
+
+        nav .user-details {
+            display: none;
+        }
+
+        .search-bar {
+            display: inline;
+        }
+
+        nav .profile-details .admin_name {
+            font-size: 10px;
+            font-weight: 500;
+            display: none;
+            color: #333;
+            margin: 0 10px;
+            white-space: nowrap;
+
+        }
+
+        .home-section nav .profile-details {
+            min-width: 50px;
+            height: 40px;
+
+        }
+    }
+
+    /* DASHBOARD Content */
+    .small-view {
+        background-color: whitesmoke;
+        border-radius: 5%;
+        min-height: 130px;
+        margin-top: 6%;
+    }
+
+    .small-view .dashboard-link {
+        color: #000000;
+        text-decoration: none;
+    }
+
+    .small-view .dashboard-link .view-heading {
+        text-align: center;
+    }
+
+
+    /* DASHBOARD Content */
+    .small-view {
+        background-color: whitesmoke;
+        border-radius: 5%;
+        min-height: 130px;
+        margin-top: 6%;
+    }
+
+    .small-view .dashboard-link {
+        color: #000000;
+        text-decoration: none;
+    }
+
+    .small-view .dashboard-link .view-heading {
+        text-align: center;
+    }
+
+
+    .dash-icon {
+        border-radius: 17%;
+        margin-top: 25%;
+        height: 74px;
+        width: 80%;
+        margin-left: 36%;
+        background: #bbc9df;
+    }
+
+    .dash-txt {
+        margin-top: 8%;
+    }
+
+    .dash-txt h1 {
+        color: black;
+    }
+
+    .dash-txt h6 {
+        color: black;
+    }
+
+    .dash-icon svg {
+        margin-top: 20%;
+        margin-left: 30%;
+    }
+
+    .small-view .small-bar .row {
+        width: 99%;
+        margin-left: 0%;
+    }
+
+    @media (max-width:1199px) {
+        .dash-icon svg {
+            margin-top: 18%;
+            margin-left: 19%;
+        }
+
+        .dash-icon {
+            height: 61px;
+            width: 80%;
+            margin-top: 50%;
+        }
+
+        .dash-txt {
+            margin-top: 21%;
+        }
+
+        .dash-txt h1 {
+            font-size: 160%;
+        }
+
+        .dash-txt h6 {
+            font-size: 90%;
+        }
+    }
+
+    @media (max-width:1000px) {
+        .dash-txt {
+            margin-top: 21%;
+            margin-left: 10%;
+        }
+
+        .dash-icon {
+            width: 110%;
+        }
+
+        .rec-order .row {
+            width: 91%;
+        }
+    }
+
+    @media (max-width:769px) {
+        .small-view .small-bar .row {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .dash-icon {
+            width: 200%;
+            margin-left: 140%;
+        }
+
+        .dash-txt {
+            margin-top: 3%;
+            margin-left: -6%;
+            width: 174%;
+            text-align: center;
+        }
+
+        .rec-order .row {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .rec-order .row {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .rec-order .order {
+            width: 203%;
+        }
+
+        .rec-order .order table {
+            margin-left: 18px;
+            width: 98%;
+            background: white;
+            border-radius: 2%;
+        }
+
+    }
+    .dash-list {
+
+width: 382%;
+margin-left: 9%;
+}
+
+
+    @media (max-width:580px) {
+        .dash-icon svg {
+            width: 46%;
+            margin-top: 11%;
+            margin-left: 27%;
+            height: 65%;
+
+        }
+
+        .dash-icon {
+            height: 45px;
+        }
+    }
+
+    @media (max-width:500px) {
+        .dash-icon {
+            width: 300%;
+            margin-left: 131%;
+            height: 45px;
+        }
+
+        .dash-list {
+            width: 403%;
+            margin-left: 10%;
+        }
+    }
+
+    @media (max-width:450px) {
+        .dash-icon {
+            width: 300%;
+            margin-left: 136%;
+            height: 45px;
+        }
+
+        .rec-order .order {
+            width: 195%;
+            margin-left: 7%;
+        }
+
+        .dash-list {
+            width: 395%;
+            margin-left: 21%;
+        }
+
+
+
+
+    }
+
+    .rec-order .order table {
+
+width: 98%;
+margin-left: 1%;
+background: white;
+border-radius: 2%;
+}
+</style>
+
+<body>
+    <div class="sidebar">
+        <div class="logo_details">
+            <span class="logo_name">Online_shop</span>
+            <button
+                style="width: 16%;height: 50%; margin-left: 11%; background: #001c4f;     border: 0px solid #ced4da;"
+                class="hide ">
+                <svg xmlns="http://www.w3.org/2000/svg" style="    margin-left: -34%; " width="32" height="32"
+                    fill="white" class="bi bi-x-square" viewBox="0 0 16 16">
+                    <path
+                        d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z" />
+                    <path
+                        d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z" />
+                </svg>
+            </button>
+        </div>
+        <ul class="nav-links">
+            <li>
+                <a href="dashboard.html">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                        class="bi bi-ui-checks-grid" viewBox="0 0 16 16">
+                        <path
+                            d="M2 10h3a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1v-3a1 1 0 0 1 1-1zm9-9h3a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1h-3a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1zm0 9a1 1 0 0 0-1 1v3a1 1 0 0 0 1 1h3a1 1 0 0 0 1-1v-3a1 1 0 0 0-1-1h-3zm0-10a2 2 0 0 0-2 2v3a2 2 0 0 0 2 2h3a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2h-3zM2 9a2 2 0 0 0-2 2v3a2 2 0 0 0 2 2h3a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H2zm7 2a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2h-3a2 2 0 0 1-2-2v-3zM0 2a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2zm5.354.854a.5.5 0 1 0-.708-.708L3 3.793l-.646-.647a.5.5 0 1 0-.708.708l1 1a.5.5 0 0 0 .708 0l2-2z" />
+                    </svg>
+                    <span class="link-name">Dashboard</span>
+                </a>
+            </li>
+            <li>
+                <a href="product.html">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                        class="bi bi-archive" viewBox="0 0 16 16">
+                        <path
+                            d="M0 2a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1v7.5a2.5 2.5 0 0 1-2.5 2.5h-9A2.5 2.5 0 0 1 1 12.5V5a1 1 0 0 1-1-1V2zm2 3v7.5A1.5 1.5 0 0 0 3.5 14h9a1.5 1.5 0 0 0 1.5-1.5V5H2zm13-3H1v2h14V2zM5 7.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5z" />
+                    </svg>
+                    <span class="link-name">Product</span>
+                </a>
+            </li>
+            <li>
+                <a href="order_list.html">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                        class="bi bi-card-checklist" viewBox="0 0 16 16">
+                        <path
+                            d="M14.5 3a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-13a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h13zm-13-1A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-13z" />
+                        <path
+                            d="M7 5.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5zm-1.496-.854a.5.5 0 0 1 0 .708l-1.5 1.5a.5.5 0 0 1-.708 0l-.5-.5a.5.5 0 1 1 .708-.708l.146.147 1.146-1.147a.5.5 0 0 1 .708 0zM7 9.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5zm-1.496-.854a.5.5 0 0 1 0 .708l-1.5 1.5a.5.5 0 0 1-.708 0l-.5-.5a.5.5 0 0 1 .708-.708l.146.147 1.146-1.147a.5.5 0 0 1 .708 0z" />
+                    </svg>
+                    <span class="link-name">Order list</span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                        class="bi bi-pie-chart" viewBox="0 0 16 16">
+                        <path
+                            d="M7.5 1.018a7 7 0 0 0-4.79 11.566L7.5 7.793V1.018zm1 0V7.5h6.482A7.001 7.001 0 0 0 8.5 1.018zM14.982 8.5H8.207l-4.79 4.79A7 7 0 0 0 14.982 8.5zM0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8z" />
+                    </svg>
+                    <span class="link-name">Analyatics</span>
+                </a>
+            </li>
+            <li>
+                <a href="stock.html">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                        class="bi bi-stack" viewBox="0 0 16 16">
+                        <path
+                            d="m14.12 10.163 1.715.858c.22.11.22.424 0 .534L8.267 15.34a.598.598 0 0 1-.534 0L.165 11.555a.299.299 0 0 1 0-.534l1.716-.858 5.317 2.659c.505.252 1.1.252 1.604 0l5.317-2.66zM7.733.063a.598.598 0 0 1 .534 0l7.568 3.784a.3.3 0 0 1 0 .535L8.267 8.165a.598.598 0 0 1-.534 0L.165 4.382a.299.299 0 0 1 0-.535L7.733.063z" />
+                        <path
+                            d="m14.12 6.576 1.715.858c.22.11.22.424 0 .534l-7.568 3.784a.598.598 0 0 1-.534 0L.165 7.968a.299.299 0 0 1 0-.534l1.716-.858 5.317 2.659c.505.252 1.1.252 1.604 0l5.317-2.659z" />
+                    </svg>
+                    <span class="link-name">Stock</span>
+                </a>
+            </li>
+            <li>
+                <a href="total_order.html">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                        class="bi bi-book" viewBox="0 0 16 16">
+                        <path
+                            d="M1 2.828c.885-.37 2.154-.769 3.388-.893 1.33-.134 2.458.063 3.112.752v9.746c-.935-.53-2.12-.603-3.213-.493-1.18.12-2.37.461-3.287.811V2.828zm7.5-.141c.654-.689 1.782-.886 3.112-.752 1.234.124 2.503.523 3.388.893v9.923c-.918-.35-2.107-.692-3.287-.81-1.094-.111-2.278-.039-3.213.492V2.687zM8 1.783C7.015.936 5.587.81 4.287.94c-1.514.153-3.042.672-3.994 1.105A.5.5 0 0 0 0 2.5v11a.5.5 0 0 0 .707.455c.882-.4 2.303-.881 3.68-1.02 1.409-.142 2.59.087 3.223.877a.5.5 0 0 0 .78 0c.633-.79 1.814-1.019 3.222-.877 1.378.139 2.8.62 3.681 1.02A.5.5 0 0 0 16 13.5v-11a.5.5 0 0 0-.293-.455c-.952-.433-2.48-.952-3.994-1.105C10.413.809 8.985.936 8 1.783z" />
+                    </svg>
+                    <span class="link-name">Total Order</span>
+                </a>
+            </li>
+            <li>
+                <a href="team_members.html">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                        class="bi bi-person" viewBox="0 0 16 16">
+                        <path
+                            d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6Zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0Zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4Zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10Z" />
+                    </svg>
+                    <span class="link-name">Team member</span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                        class="bi bi-chat-right-text" viewBox="0 0 16 16">
+                        <path
+                            d="M2 1a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h9.586a2 2 0 0 1 1.414.586l2 2V2a1 1 0 0 0-1-1H2zm12-1a2 2 0 0 1 2 2v12.793a.5.5 0 0 1-.854.353l-2.853-2.853a1 1 0 0 0-.707-.293H2a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h12z" />
+                        <path
+                            d="M3 3.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zM3 6a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9A.5.5 0 0 1 3 6zm0 2.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5z" />
+                    </svg>
+                    <span class="link-name">Massage</span>
+                </a>
+            </li>
+            <li>
+                <a href="favarite.html">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                        class="bi bi-heart" viewBox="0 0 16 16">
+                        <path
+                            d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z" />
+                    </svg>
+                    <span class="link-name"> Favarite</span>
+                </a>
+            </li>
+            <li>
+                <a href="website_setting.html">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                        class="bi bi-gear" viewBox="0 0 16 16">
+                        <path
+                            d="M8 4.754a3.246 3.246 0 1 0 0 6.492 3.246 3.246 0 0 0 0-6.492zM5.754 8a2.246 2.246 0 1 1 4.492 0 2.246 2.246 0 0 1-4.492 0z" />
+                        <path
+                            d="M9.796 1.343c-.527-1.79-3.065-1.79-3.592 0l-.094.319a.873.873 0 0 1-1.255.52l-.292-.16c-1.64-.892-3.433.902-2.54 2.541l.159.292a.873.873 0 0 1-.52 1.255l-.319.094c-1.79.527-1.79 3.065 0 3.592l.319.094a.873.873 0 0 1 .52 1.255l-.16.292c-.892 1.64.901 3.434 2.541 2.54l.292-.159a.873.873 0 0 1 1.255.52l.094.319c.527 1.79 3.065 1.79 3.592 0l.094-.319a.873.873 0 0 1 1.255-.52l.292.16c1.64.893 3.434-.902 2.54-2.541l-.159-.292a.873.873 0 0 1 .52-1.255l.319-.094c1.79-.527 1.79-3.065 0-3.592l-.319-.094a.873.873 0 0 1-.52-1.255l.16-.292c.893-1.64-.902-3.433-2.541-2.54l-.292.159a.873.873 0 0 1-1.255-.52l-.094-.319zm-2.633.283c.246-.835 1.428-.835 1.674 0l.094.319a1.873 1.873 0 0 0 2.693 1.115l.291-.16c.764-.415 1.6.42 1.184 1.185l-.159.292a1.873 1.873 0 0 0 1.116 2.692l.318.094c.835.246.835 1.428 0 1.674l-.319.094a1.873 1.873 0 0 0-1.115 2.693l.16.291c.415.764-.42 1.6-1.185 1.184l-.291-.159a1.873 1.873 0 0 0-2.693 1.116l-.094.318c-.246.835-1.428.835-1.674 0l-.094-.319a1.873 1.873 0 0 0-2.692-1.115l-.292.16c-.764.415-1.6-.42-1.184-1.185l.159-.291A1.873 1.873 0 0 0 1.945 8.93l-.319-.094c-.835-.246-.835-1.428 0-1.674l.319-.094A1.873 1.873 0 0 0 3.06 4.377l-.16-.292c-.415-.764.42-1.6 1.185-1.184l.292.159a1.873 1.873 0 0 0 2.692-1.115l.094-.319z" />
+                    </svg>
+                    <span class="link-name"> Setting</span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                        class="bi bi-box-arrow-left" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd"
+                            d="M6 12.5a.5.5 0 0 0 .5.5h8a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 0-.5-.5h-8a.5.5 0 0 0-.5.5v2a.5.5 0 0 1-1 0v-2A1.5 1.5 0 0 1 6.5 2h8A1.5 1.5 0 0 1 16 3.5v9a1.5 1.5 0 0 1-1.5 1.5h-8A1.5 1.5 0 0 1 5 12.5v-2a.5.5 0 0 1 1 0v2z" />
+                        <path fill-rule="evenodd"
+                            d="M.146 8.354a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L1.707 7.5H10.5a.5.5 0 0 1 0 1H1.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3z" />
+                    </svg>
+                    <span class="link-name"> Log Out</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+
+
+    <script>
+        $(document).ready(function () {
+            $(".show").click(function () {
+                $(".sidebar").show("display: none");
+            });
+        });
+        $(document).ready(function () {
+            $(".hide").click(function () {
+                $(".sidebar").hide("display: none");
+            });
+        });
+    </script>
+    <!-- home-content -->
+    <section class="home-section">
+        <nav>
+            <div class="sidebar-button">
+                <button class="show form-control" style="      border: 0px solid #ced4da;">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="sidebarBtn" width="25" height="25"
+                        fill="currentColor" class="bi bi-menu-button-wide" viewBox="0 0 16 16">
+                        <path
+                            d="M0 1.5A1.5 1.5 0 0 1 1.5 0h13A1.5 1.5 0 0 1 16 1.5v2A1.5 1.5 0 0 1 14.5 5h-13A1.5 1.5 0 0 1 0 3.5v-2zM1.5 1a.5.5 0 0 0-.5.5v2a.5.5 0 0 0 .5.5h13a.5.5 0 0 0 .5-.5v-2a.5.5 0 0 0-.5-.5h-13z" />
+                        <path
+                            d="M2 2.5a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 0 1h-3a.5.5 0 0 1-.5-.5zm10.823.323-.396-.396A.25.25 0 0 1 12.604 2h.792a.25.25 0 0 1 .177.427l-.396.396a.25.25 0 0 1-.354 0zM0 8a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V8zm1 3v2a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2H1zm14-1V8a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1v2h14zM2 8.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm0 4a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 0 1h-6a.5.5 0 0 1-.5-.5z" />
+                    </svg>
+                </button>
+                <span class="dashboard">Online_Shop</span>
+            </div>
+            <div class="user-details">
+                <input type="text" class="form-control" placeholder="  Search .....">
+                <button type="button" class="btn btn-light">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                        class="bi bi-search" viewBox="0 0 16 16">
+                        <path
+                            d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
+                    </svg>
+                </button>
+            </div>
+            <div class="profile-details">
+                <a href="#" style="    text-decoration: none; "><img src="http://localhost:8080:8080/coreigniter_4/image/16.png"
+                        alt="">
+                    <span class="admin_name">Pravin</span>
+                </a>
+            </div>
+
+        </nav>
+    </section><br>
+
+    <!-- <section class="search-bar">
+        <div class="container">
+            <div class="row">
+                <div class="col-1">
+                    <input type="text" class="form-control" placeholder="  Search .....">
+                </div>
+                <div class="col-8">
+                    <input type="text" class="form-control" placeholder="  Search .....">
+                </div>
+                <div class="col-1">
+                    <button type="button" class="btn btn-light">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                            class="bi bi-search" viewBox="0 0 16 16">
+                            <path
+                                d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
+                        </svg>
+                    </button>
+                </div>
+                <div class="col-2">
+                    <input type="text" class="form-control" placeholder="  Search .....">
+                </div>
+            </div>
+        </div>
+    </section> -->
+
+    <section id="Dashbord">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <h1><b>Dashboard</b></h1>
+                </div>
+                <div class="col-12">
+                    <h6 style="color: #a99191;"><a href="#" style="color: #9da2a9;text-decoration: none;">Dashboard</a>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="black"
+                            class="bi bi-caret-right-fill" viewBox="0 0 16 16" style="    margin-bottom: 2px;">
+                            <path
+                                d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z" />
+                        </svg> <span style="color: blue;">Home</span>
+                    </h6>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-4">
+                    <a href="#" style="text-decoration: none;">
+                        <div class="small-view">
+                            <div class="small-bar">
+                                <div class="row" style="">
+                                    <div class="col-4">
+                                        <div class="dash-icon">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="35" height="40" fill="blue"
+                                                class="bi bi-bag-check-fill" viewBox="0 0 16 16">
+                                                <path fill-rule="evenodd"
+                                                    d="M10.5 3.5a2.5 2.5 0 0 0-5 0V4h5v-.5zm1 0V4H15v10a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V4h3.5v-.5a3.5 3.5 0 1 1 7 0zm-.646 5.354a.5.5 0 0 0-.708-.708L7.5 10.793 6.354 9.646a.5.5 0 1 0-.708.708l1.5 1.5a.5.5 0 0 0 .708 0l3-3z" />
+                                            </svg>
+                                        </div>
+                                    </div>
+                                    <div class="col-8">
+                                        <div class="dash-txt" style="">
+                                            <h1 style=" "><b>0</b></h1>
+                                            <h6><b>New Order</b></h6>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-4">
+                    <a href="#" style="text-decoration: none;">
+                        <div class="small-view">
+                            <div class="small-bar">
+                                <div class="row" style="width: 99%;margin-left: 0%;">
+                                    <div class="col-4">
+                                        <div class="dash-icon" style="background: #e99591;">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="35" height="40" fill="red"
+                                                class="bi bi-currency-rupee" viewBox="0 0 16 16" style="">
+                                                <path
+                                                    d="M1 3.5A1.5 1.5 0 0 1 2.5 2h2.764c.958 0 1.76.56 2.311 1.184C7.985 3.648 8.48 4 9 4h4.5A1.5 1.5 0 0 1 15 5.5v.64c.57.265.94.876.856 1.546l-.64 5.124A2.5 2.5 0 0 1 12.733 15H3.266a2.5 2.5 0 0 1-2.481-2.19l-.64-5.124A1.5 1.5 0 0 1 1 6.14V3.5zM2 6h12v-.5a.5.5 0 0 0-.5-.5H9c-.964 0-1.71-.629-2.174-1.154C6.374 3.334 5.82 3 5.264 3H2.5a.5.5 0 0 0-.5.5V6zm-.367 1a.5.5 0 0 0-.496.562l.64 5.124A1.5 1.5 0 0 0 3.266 14h9.468a1.5 1.5 0 0 0 1.489-1.314l.64-5.124A.5.5 0 0 0 14.367 7H1.633z" />
+                                            </svg>
+                                        </div>
+                                    </div>
+                                    <div class="col-8">
+                                        <div class="dash-txt" style=" ">
+                                            <h1 style=""><b>0</b></h1>
+                                            <h6><b>Pending orders</b></h6>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-4">
+                    <a href="#" style="text-decoration: none;">
+                        <div class="small-view">
+                            <div class="small-bar">
+                                <div class="row" style="width: 99%;margin-left: 0%;">
+                                    <div class="col-4">
+                                        <div class="dash-icon" style="background: #f9afef;">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="35" height="40"
+                                                fill="darkpink" class="bi bi-people-fill" viewBox="0 0 16 16" style="">
+                                                <path
+                                                    d="M2.97 1.35A1 1 0 0 1 3.73 1h8.54a1 1 0 0 1 .76.35l2.609 3.044A1.5 1.5 0 0 1 16 5.37v.255a2.375 2.375 0 0 1-4.25 1.458A2.371 2.371 0 0 1 9.875 8 2.37 2.37 0 0 1 8 7.083 2.37 2.37 0 0 1 6.125 8a2.37 2.37 0 0 1-1.875-.917A2.375 2.375 0 0 1 0 5.625V5.37a1.5 1.5 0 0 1 .361-.976l2.61-3.045zm1.78 4.275a1.375 1.375 0 0 0 2.75 0 .5.5 0 0 1 1 0 1.375 1.375 0 0 0 2.75 0 .5.5 0 0 1 1 0 1.375 1.375 0 1 0 2.75 0V5.37a.5.5 0 0 0-.12-.325L12.27 2H3.73L1.12 5.045A.5.5 0 0 0 1 5.37v.255a1.375 1.375 0 0 0 2.75 0 .5.5 0 0 1 1 0zM1.5 8.5A.5.5 0 0 1 2 9v6h12V9a.5.5 0 0 1 1 0v6h.5a.5.5 0 0 1 0 1H.5a.5.5 0 0 1 0-1H1V9a.5.5 0 0 1 .5-.5zm2 .5a.5.5 0 0 1 .5.5V13h8V9.5a.5.5 0 0 1 1 0V13a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9.5a.5.5 0 0 1 .5-.5z" />
+                                            </svg>
+                                        </div>
+                                    </div>
+                                    <div class="col-8">
+                                        <div class="dash-txt" style="">
+                                            <h1 style=" "><b>0</b></h1>
+                                            <h6><b>Returns</b></h6>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div><br>
+            <div class="row">
+                <div class="col-4">
+                    <a href="#" style="text-decoration: none;">
+                        <div class="small-view">
+                            <div class="small-bar">
+                                <div class="row" style="">
+                                    <div class="col-4">
+                                        <div class="dash-icon">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="35" height="40" fill="blue"
+                                                class="bi bi-bag-check-fill" viewBox="0 0 16 16">
+                                                <path fill-rule="evenodd"
+                                                    d="M10.5 3.5a2.5 2.5 0 0 0-5 0V4h5v-.5zm1 0V4H15v10a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V4h3.5v-.5a3.5 3.5 0 1 1 7 0zm-.646 5.354a.5.5 0 0 0-.708-.708L7.5 10.793 6.354 9.646a.5.5 0 1 0-.708.708l1.5 1.5a.5.5 0 0 0 .708 0l3-3z" />
+                                            </svg>
+                                        </div>
+                                    </div>
+                                    <div class="col-8">
+                                        <div class="dash-txt" style="">
+                                            <h1 style=" "><b>0</b></h1>
+                                            <h6><b>New Order</b></h6>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-4">
+                    <a href="#" style="text-decoration: none;">
+                        <div class="small-view">
+                            <div class="small-bar">
+                                <div class="row" style="width: 99%;margin-left: 0%;">
+                                    <div class="col-4">
+                                        <div class="dash-icon" style="background:  #a4e4c5;">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="35" height="40" fill="green"
+                                                class="bi bi-currency-rupee" viewBox="0 0 16 16" style="">
+                                                <path
+                                                    d="M4 3.06h2.726c1.22 0 2.12.575 2.325 1.724H4v1.051h5.051C8.855 7.001 8 7.558 6.788 7.558H4v1.317L8.437 14h2.11L6.095 8.884h.855c2.316-.018 3.465-1.476 3.688-3.049H12V4.784h-1.345c-.08-.778-.357-1.335-.793-1.732H12V2H4v1.06Z" />
+                                            </svg>
+                                        </div>
+                                    </div>
+                                    <div class="col-8">
+                                        <div class="dash-txt" style=" ">
+                                            <h1 style=""><b>0</b></h1>
+                                            <h6><b>Total Sales</b></h6>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-4">
+                    <a href="#" style="text-decoration: none;">
+                        <div class="small-view">
+                            <div class="small-bar">
+                                <div class="row" style="width: 99%;margin-left: 0%;">
+                                    <div class="col-4">
+                                        <div class="dash-icon" style="background: #e0e779;">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="35" height="40" fill="yellow"
+                                                class="bi bi-people-fill" viewBox="0 0 16 16" style="">
+                                                <path
+                                                    d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1H7Zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6Zm-5.784 6A2.238 2.238 0 0 1 5 13c0-1.355.68-2.75 1.936-3.72A6.325 6.325 0 0 0 5 9c-4 0-5 3-5 4s1 1 1 1h4.216ZM4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5Z" />
+                                            </svg>
+                                        </div>
+                                    </div>
+                                    <div class="col-8">
+                                        <div class="dash-txt" style="">
+                                            <h1 style=" "><b>0</b></h1>
+                                            <h6><b>Users</b></h6>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div><br>
+
+            <div class="row">
+                <div class="col-12">
+                    <div class="rec-order" style="    background: whitesmoke;">
+                        <div class="title">
+                            <h3 style="padding-top: 2%;padding-left: 3%;"><b>Recent Order</b></h3>
+                        </div>
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="order">
+                                    <table class="table table-borderless" style="">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">#</th>
+                                                <th scope="col">Photo</th>
+                                                <th scope="col">Name</th>
+                                                <th scope="col">Date</th>
+                                                <th scope="col">Product</th>
+
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <th scope="row">
+                                                    1
+                                                </th>
+                                                <td>
+                                                    <img src="http://localhost:8080/coreigniter_4/image/16.png" width="30px"
+                                                        height="auto" style="    border-radius: 54%;">
+                                                </td>
+                                                <td>
+                                                    Rahul
+                                                </td>
+                                                <td>
+                                                    10/02/2023
+                                                </td>
+                                                <td>
+                                                    Watch
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                        <tbody>
+                                            <tr>
+                                                <th scope="row">
+                                                    2
+                                                </th>
+                                                <td>
+                                                    <img src="http://localhost:8080/coreigniter_4/image/16.png" width="30px"
+                                                        height="auto" style="    border-radius: 54%;">
+                                                </td>
+                                                <td>
+                                                    Rahul
+                                                </td>
+                                                <td>
+                                                    10/02/2023
+                                                </td>
+                                                <td>
+                                                    tv
+                                                </td>
+                                        <tbody>
+                                            <tr>
+                                                <th scope="row">
+                                                    3
+                                                </th>
+                                                <td>
+                                                    <img src="http://localhost:8080/coreigniter_4/image/16.png" width="30px"
+                                                        height="auto" style="    border-radius: 54%;">
+                                                </td>
+                                                <td>
+                                                    Pravin
+                                                </td>
+                                                <td>
+                                                    10/02/2023
+                                                </td>
+                                                <td>
+                                                    Smart watch
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="order">
+                                    <table class="table table-borderless" style="">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">#</th>
+                                                <th scope="col">Photo</th>
+                                                <th scope="col">Name</th>
+                                                <th scope="col">Date</th>
+                                                <th scope="col">Product</th>
+
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <th scope="row">
+                                                    1
+                                                </th>
+                                                <td>
+                                                    <img src="http://localhost:8080/coreigniter_4/image/16.png" width="30px"
+                                                        height="auto" style="    border-radius: 54%;">
+                                                </td>
+                                                <td>
+                                                    Rahul
+                                                </td>
+                                                <td>
+                                                    10/02/2023
+                                                </td>
+                                                <td>
+                                                    Watch
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                        <tbody>
+                                            <tr>
+                                                <th scope="row">
+                                                    2
+                                                </th>
+                                                <td>
+                                                    <img src="http://localhost:8080/coreigniter_4/image/16.png" width="30px"
+                                                        height="auto" style="    border-radius: 54%;">
+                                                </td>
+                                                <td>
+                                                    Rahul
+                                                </td>
+                                                <td>
+                                                    10/02/2023
+                                                </td>
+                                                <td>
+                                                    tv
+                                                </td>
+                                        <tbody>
+                                            <tr>
+                                                <th scope="row">
+                                                    3
+                                                </th>
+                                                <td>
+                                                    <img src="http://localhost:8080/coreigniter_4/image/16.png" width="30px"
+                                                        height="auto" style="    border-radius: 54%;">
+                                                </td>
+                                                <td>
+                                                    Pravin
+                                                </td>
+                                                <td>
+                                                    10/02/2023
+                                                </td>
+                                                <td>
+                                                    Smart watch
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row" style="margin-top: 3%;">
+                        <div class="col-12">
+                            <h2> Users</h2>
+                        </div>
+                    </div>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Name</th>
+                                <th scope="col">Addreas</th>
+                                <th scope="col">Product</th>
+                            </tr>
+                        </thead>
+                        <?php
+                        $i = 1;
+                        foreach ($data as $row) {
+                            ?>
+                        <tbody>
+                            <tr>
+                                <th scope="row">
+                                    <?php echo $i; ?>
+                                </th>
+                                <td>
+                                    <?php echo $row->first_name; ?>
+                                </td>
+                                <td>
+                                    <?php echo $row->last_name; ?>
+                                </td>
+                                <td>
+                                    <?php echo $row->email; ?>
+                                </td>
+                            </tr>
+                            <?php $i++;
+                        } ?>
+                        </tbody>
+                    </table>
+                </div>
+    </section>
+
+
+
+</body>
+
+</html>

@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="http://localhost:8080/coreigniter_4/css/style.css">
+   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+
+<!--  Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+
+  <!-- jQuery library -->
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.slim.min.js"></script>
+
+  <!-- Popper JS -->
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+
+  <!-- Latest compiled JavaScript -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+<style>
+    body {
+        text-decoration: none;
+
+    }
+
+    .product {
+        display: flex;
+        justify-content: center;
+        text-align: center;
+        width: 100%;
+        /* background-color: red; */
+    }
+
+    .food {
+        display: flex;
+        justify-content: center;
+        text-align: center;
+        width: 100%;
+        /* background-color: red; */
+    }
+    .sports {
+        display: flex;
+        justify-content: center;
+        text-align: center;
+        width: 100%;
+        /* background-color: red; */
+    }
+
+    .data {
+        margin-top: 2%;
+        padding-top: 2%;
+        margin-left: 1%;
+        margin-right: 1%;
+        background: whitesmoke;
+        margin-bottom: 2%;
+    }
+
+    .content {
+        background: aliceblue;
+        width: 25%;
+        margin-top: 1%;
+        margin-right: 1%;
+        border-radius: 2%;
+        margin-left: 1%;
+        margin-bottom: 2%;
+        box-shadow: 0px 0px 3px 0px #888888;
+
+    }
+
+    h3 {
+        background-color: whitesmoke;
+    }
+
+    .image {
+        width: 100px;
+        height: 44%;
+    }
+
+    .product :hover {
+        transform: translate(0px, -8px);
+        box-shadow: black;
+    }
+
+    .food :hover {
+        transform: translate(0px, -8px);
+        box-shadow: black;
+    }
+    .sports :hover {
+        transform: translate(0px, -8px);
+        box-shadow: black;
+    }
+
+    @media(max-width:1000px) {
+        .product {
+            display: flex;
+            justify-content: space-evenly;
+            text-align: center;
+            width: 100%;
+            /* background-color: red; */
+            flex-wrap: wrap;
+            flex-direction: row;
+            align-content: stretch;
+        }
+
+        .food {
+            display: flex;
+            justify-content: space-evenly;
+            text-align: center;
+            width: 100%;
+            /* background-color: red; */
+            flex-wrap: wrap;
+            flex-direction: row;
+            align-content: stretch;
+        }
+        .sports {
+            display: flex;
+            justify-content: space-evenly;
+            text-align: center;
+            width: 100%;
+            /* background-color: red; */
+            flex-wrap: wrap;
+            flex-direction: row;
+            align-content: stretch;
+        }
+    }
+
+    @media(max-width:700px) {
+        .product {
+            display: flex;
+            justify-content: space-evenly;
+            text-align: center;
+            width: 100%;
+            /* background-color: red; */
+            flex-wrap: wrap;
+            flex-direction: row;
+            align-content: stretch;
+        }
+
+        .product {
+            display: flex;
+            justify-content: space-evenly;
+            text-align: center;
+            width: 100%;
+            /* background-color: red; */
+            flex-wrap: wrap;
+            flex-direction: row;
+            align-content: stretch;
+        }
+
+        P {
+            font-size: 70%;
+        }
+
+        .data .body h3 {
+            font-size: 100%;
+        }
+
+    }
+
+    @media(max-width:600px) {
+        .content {
+            width: 46%;
+        }
+    }
+    * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    width: 100%;
+
+}
+
+.sidebar {
+    display: none;
+
+    position: fixed;
+    height: 100%;
+    width: 240px;
+    background: #001c4f;
+    /* transition: all 0.5s ease; */
+}
+
+.sidebar .active {
+    width: 60px;
+}
+
+.sidebar .logo_details {
+    height: 80px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+
+}
+
+.sidebar .logo_details svg {
+    font-size: 28px;
+    font-weight: 500;
+    color: #fff;
+    min-width: 60px;
+    text-align: center;
+}
+
+.sidebar .logo_details .logo_name {
+    font-size: 24px;
+    font-weight: 500;
+    color: #fff;
+    margin-left: 30px;
+}
+
+.sidebar .nav-links {
+    margin-top: 16px;
+}
+
+.sidebar .nav-links li {
+    height: 50px;
+    width: 116%;
+    list-style: none;
+    margin-left: -16%;
+
+}
+
+.sidebar .nav-links li a {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    transition: all 0.4s ease;
+
+}
+
+.sidebar .nav-links li a:hover {
+    background-color: #546c98;
+}
+
+.sidebar .nav-links li a svg {
+    color: rgb(255, 255, 255);
+    min-width: 60px;
+    text-align: center;
+    font-size: 18px;
+}
+
+.sidebar .nav-links li a .link-name {
+    color: #fff;
+    font-size: 15px;
+    font-weight: 400;
+    white-space: nowrap;
+}
+
+
+
+/* Home-section css */
+
+.home-section {
+    background: #f5f5ff;
+    /* position: relative; */
+    /* min-height: 100vh; */
+    left: calc(100% - 240px);
+    left: 240px;
+}
+
+.home-section nav {
+    height: 55px;
+    background: whitesmoke;
+    padding: 0 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+}
+
+.home-section nav .sidebar-button {
+    display: flex;
+    align-items: center;
+    font-size: 24px;
+    font-weight: 500;
+}
+
+.home-section nav .sidebar-button svg {
+    font-size: 35px;
+    margin-right: 10px;
+}
+
+.home-section nav .search-box {
+    height: 50px;
+    width: 550px;
+    margin: 0 20px;
+    position: relative;
+}
+
+nav .search-box input {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    border-radius: 6px;
+    padding: 0 15px;
+    font-size: 17px;
+    color: #000000;
+    background: #F5F6FA;
+    border: 2PX solid #efeef1;
+    outline: none;
+}
+
+nav .search-box svg {
+    position: absolute;
+    right: 5px;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 22px;
+    width: 40px;
+    /* background: #2697ff; */
+    border-radius: 6px;
+    color: #000000;
+    font-size: 22px;
+    line-height: 40px;
+    text-align: center;
+}
+
+.home-section nav .profile-details {
+    display: flex;
+    align-items: center;
+    height: 50px;
+    min-width: 139px;
+    background: #F5F6FA;
+    border: 2px solid#efeef1;
+    border-radius: 6px;
+    padding: 0 15px 0 2px;
+}
+
+nav .profile-details img {
+    height: 40px;
+    width: 40px;
+    object-fit: cover;
+    border-radius: 6px;
+}
+
+nav .profile-details .admin_name {
+    font-size: 15px;
+    font-weight: 500;
+    color: #333;
+    margin: 0 10px;
+    white-space: nowrap;
+
+}
+
+nav .profile-details svg {
+    color: #333;
+    font-size: 25px;
+}
+nav .user-details  {
+    display: flex;
+ }
+ .search-bar{
+    display: none;
+ }
+
+ .user-list{
+    background: whitesmoke;border-radius: 2%;text-align: center;
+}
+
+@media (max-width:550px) {
+    nav .profile-details img {
+        height: 30px;
+        width: 30px;
+        margin-left: 16%;
+        object-fit: cover;
+        border-radius: 6px;
+    }
+
+    .dropdown-menu{
+        left: -102px;
+
+    }
+
+    .Dashbord .user-list{
+        font-size: 20px;
+    }
+    nav .user-details  {
+       display: none;
+    }
+
+    .search-bar{
+        display: inline;
+     }
+
+    nav .profile-details .admin_name {
+        font-size: 10px;
+        font-weight: 500;
+        display: none;
+        color: #333;
+        margin: 0 10px;
+        white-space: nowrap;
+
+    }
+
+    .home-section nav .profile-details {
+        min-width: 50px;
+        height: 40px;
+
+    }
+}
+
+/* DASHBOARD Content */
+.small-view {
+    background-color: whitesmoke;
+    border-radius: 5%;
+    min-height: 130px;
+    margin-top: 6%;
+}
+.small-view .dashboard-link{
+    color: #000000;
+    text-decoration: none;
+}
+.small-view .dashboard-link .view-heading{
+    text-align: center;
+}
+
+.image{
+        margin-top: 40%;   width: 250px; height: auto;
+    }
+    .shop{
+        margin-top: -5%;
+    }
+    @media (max-width:1000px) {
+        .container .row {
+        display:flex;
+        flex-direction: column;
+    }
+    .container .row .col-4{
+        max-width: 100.333333%;
+    }
+    .container .row .col-4img{
+        margin-top: 10%;
+    }
+    .rounded{
+        margin-top: 10%;
+    }
+
+    .container .row .col-6{
+        max-width: 100%;
+    }
+
+    .shop{
+        margin-top: -1%;
+    }
+    
+    }
+
+    @media (max-width:550px) {
+        .container .row .col-4{
+        max-width: 88.333333%;
+        margin-left: 6%;
+    }
+    .container .row .col-12{
+        max-width: 88%;
+        margin-left: 6%;
+    }
+    }
+
+</style>
+<body style="    background-color: whitesmoke;">
+  <!-- Navbar start -->
+  <section class="home-section">
+        <nav>
+            <div class="sidebar-button">
+                <span class="dashboard">Online_Shop</span>
+            </div>
+            <div class="user-details">
+                <input type="text" class="form-control"id="searchBar" name="searchBar" placeholder="  Search .....">
+                <button type="button" class="btn btn-light" style="margin-left: -16%;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                        class="bi bi-search" viewBox="0 0 16 16">
+                        <path
+                            d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
+                    </svg>
+                </button>
+            </div>
+            <form class="d-flex">
+          <div class="dropdown">
+            <img src="Photos/16.png" class="img-thumbnail dropdown-toggle" id="dropdownMenu2" alt="..." width="50px"
+              height="50px" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
+            <ul class="dropdown-menu dropdown-menu-lg-end" aria-labelledby="dropdownMenu2">
+            <li><a class="dropdown-item" href="http://localhost:8080/coreigniter_4/Crud/login">Login</a></li>
+              <li><button class="dropdown-item" type="button">Settings</button></li>
+            </ul>
+          </div>
+        </form>
+
+        </nav>
+    </section>
+  <!-- Navbar end -->
+    <!-- Navbar start -->
+  <!-- Navbar end -->
+    <!-- Product Nav-bar -->
+    <nav class="navbar navbar-light bg-light">
+        <div class="container-fluid">
+          <div class="dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="dropdownMenuButton1" role="button" data-bs-toggle="dropdown"
+              aria-expanded="false">
+              <img src="Photos/18.webp" class="rounded mx-auto d-block" alt="..."
+                style="    width: 40px; height: auto;">Fashion
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+              <li><a class="dropdown-item" href="#">Action</a></li>
+              <li><a class="dropdown-item" href="#">Another action</a></li>
+              <li><a class="dropdown-item" href="#">Something else here</a></li>
+            </ul>
+          </div>
+          <div class="dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="dropdownMenuButton1" role="button" data-bs-toggle="dropdown"
+              aria-expanded="false">
+              <img src="Photos/19.webp" class="rounded mx-auto d-block" alt="..."
+                style="    width: 40px; height: auto;">Fashion
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+              <li><a class="dropdown-item" href="#">Action</a></li>
+              <li><a class="dropdown-item" href="#">Another action</a></li>
+              <li><a class="dropdown-item" href="#">Something else here</a></li>
+            </ul>
+          </div>
+          <div class="dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="dropdownMenuButton1" role="button" data-bs-toggle="dropdown"
+              aria-expanded="false">
+              <img src="Photos/20.webp" class="rounded mx-auto d-block" alt="..."
+                style="    width: 40px; height: auto;">Fashion
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+              <li><a class="dropdown-item" href="#">Action</a></li>
+              <li><a class="dropdown-item" href="#">Another action</a></li>
+              <li><a class="dropdown-item" href="#">Something else here</a></li>
+            </ul>
+          </div>
+          <div class="dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="dropdownMenuButton1" role="button" data-bs-toggle="dropdown"
+              aria-expanded="false">
+              <img src="Photos/21.webp" class="rounded mx-auto d-block" alt="..."
+                style="    width: 40px; height: auto;">Fashion
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+              <li><a class="dropdown-item" href="#">Action</a></li>
+              <li><a class="dropdown-item" href="#">Another action</a></li>
+              <li><a class="dropdown-item" href="#">Something else here</a></li>
+            </ul>
+          </div>
+          <div class="dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="dropdownMenuButton1" role="button" data-bs-toggle="dropdown"
+              aria-expanded="false">
+              <img src="Photos/22.webp" class="rounded mx-auto d-block" alt="..."
+                style="    width: 40px; height: auto;">Fashion
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+              <li><a class="dropdown-item" href="#">Action</a></li>
+              <li><a class="dropdown-item" href="#">Another action</a></li>
+              <li><a class="dropdown-item" href="#">Something else here</a></li>
+            </ul>
+          </div>
+          <div class="dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="dropdownMenuButton1" role="button" data-bs-toggle="dropdown"
+              aria-expanded="false">
+              <img src="Photos/18.webp" class="rounded mx-auto d-block" alt="..."
+                style="    width: 40px; height: auto;">Fashion
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+              <li><a class="dropdown-item" href="#">Action</a></li>
+              <li><a class="dropdown-item" href="#">Another action</a></li>
+              <li><a class="dropdown-item" href="#">Something else here</a></li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+      <!-- Product Nav-bar end -->
+
+      <div class="container">
+        <div class="row" >
+            <div class="col-4" style="    background-color: white;"><br>
+                <img src="image/66.webp" class=" image rounded mx-auto d-block" alt="..."style=" ">
+                <div class="row" style="align-items: center;">
+                    <div class="col-6" style="background-color: white;"><br>
+                        <button  class="form-control" style="background: #ff9f00;">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="black" class=" shop bi bi-cart4" viewBox="0 0 16 16" style="">
+                                <path d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5zM3.14 5l.5 2H5V5H3.14zM6 5v2h2V5H6zm3 0v2h2V5H9zm3 0v2h1.36l.5-2H12zm1.11 3H12v2h.61l.5-2zM11 8H9v2h2V8zM8 8H6v2h2V8zM5 8H3.89l.5 2H5V8zm0 5a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0zm9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0z"/>
+                            </svg><span style="color: black;"><b>  Add To Card</b></span>
+                        </button>
+                    </div>
+                    <div class="col-6" style="    background-color: white;"><br>
+                        <button  class="form-control" style="background: #fb641b;">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="black" class="bi bi-lightning-fill" viewBox="0 0 16 16">
+                                <path d="M5.52.359A.5.5 0 0 1 6 0h4a.5.5 0 0 1 .474.658L8.694 6H12.5a.5.5 0 0 1 .395.807l-7 9a.5.5 0 0 1-.873-.454L6.823 9.5H3.5a.5.5 0 0 1-.48-.641l2.5-8.5z"/>
+                            </svg><span style="color: black;"><b>Buy now</b></span></button>
+                    </div>
+               </div>
+            </div>
+            <div class="col-8" style="    max-width: 100.666667%;">
+                <div class="row">
+                    <div class="col-12" style="    background-color: white;"><br>
+                    
+                        <h4>Fire-Boltt Ninja Call Pro Smart Watch Dual Chip Bluetooth Calling, 1.69" Display, AI Voice Assistance with 100 Sports Modes, with SpO2 & Heart Rate Monitoring</h4>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12" style="    background-color: white;"><BR>
+                        <b style="font-size: 150%;">₹1,099</b>       <span>₹86% off</span>
+                    </div>
+                </div>
+                <div class="row" style=" ">
+                    <div class="col-12" style="    background-color: white;">
+                        <p style="font-size: %;">M.R.P.: ₹17,999</p>
+                    </div>
+                </div>
+                <div class="row" style=" display: flex;flex-direction: row;   ">
+                    <div class="col-12" style=" display: flex;  background-color: white;">
+                        <p style="font-size: %;">Strap Color :</p>
+                        <span style="color: red;border: 1px solid black;     height: 86%;   margin-left: 8%;    border-radius: 25%;background: red;"><b><p style=" width: 32px;">5</p></b></span>&nbsp;
+                        <input type="checkbox">
+                        <span style="color: black;border: 1px solid black;  height: 86%;    margin-left: 3%;  border-radius: 25%;background: black;"><b><p style=" width: 32px;">5</p></b></span>&nbsp;
+                        <input type="checkbox">
+                        <span style="color: white;border: 1px solid black;  height: 86%;   margin-left: 3%;   border-radius: 25%;background: white;"><b><p style=" width: 32px;">5</p></b></span>&nbsp;
+                        <input type="checkbox">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12" style="    background-color: white;"><br>
+                        <p style="font-size: %;">Brand :   Fire-Boltt</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12" style="    background-color: white;">
+                        <p style="font-size: %;">Model Name:   Ninja Call Pro</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12" style="    background-color: white;">
+                        <p style="font-size: %;">Style :   Modern</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12" style="    background-color: white;">
+                        <p style="font-size: %;">Display Size :   1.69 inche</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12" style="    background-color: white;"><br>
+                        <p style="font-size: %;"><b>About This Item</b></p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12" style="    background-color: white;">
+                        <p style="font-size: %;">*   1.83 inch Large Color LCD Full Touch Screen with 2.5D Curved Glass and 240*284 pixel Resolution.</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12" style="    background-color: white;">
+                        <p style="font-size: %;">*   Ultra Thin 9.8mm and IP68 Water Resistance.</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12" style="    background-color: white;">
+                        <p style="font-size: %;">*   Smart Health Tracking with SpO2, Heart Rate, Sleep Monitoring.</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12" style="    background-color: white;">
+                        <p style="font-size: %;">*   100 + Cloud Faces to match each style | All in One Social Update Notifications.</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12" style="    background-color: white;">
+                        <p style="font-size: %;">*   Touchscreen.</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12" style="    background-color: white;">
+                        <p style="font-size: %;">*   Fitness & Outdoor.</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12" style="    background-color: white;">
+                        <p style="font-size: %;">*   Battery Runtime: Upto 8 days.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+    <br>
+
+
+</body>
+
+</html>

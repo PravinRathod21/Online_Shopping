@@ -1,0 +1,29 @@
+<?php defined('BASEPATH') OR exit('No direct script access allowed'); ?>
+
+ERROR - 2023-11-13 06:24:32 --> Severity: Warning --> Undefined property: stdClass::$image D:\xampp\htdocs\coreigniter_4\application\views\dashboard_setting.php 273
+ERROR - 2023-11-13 06:24:32 --> Severity: Warning --> Undefined property: stdClass::$product D:\xampp\htdocs\coreigniter_4\application\views\dashboard_setting.php 282
+ERROR - 2023-11-13 06:24:32 --> Severity: Warning --> Undefined property: stdClass::$price D:\xampp\htdocs\coreigniter_4\application\views\dashboard_setting.php 291
+ERROR - 2023-11-13 06:24:35 --> Severity: Warning --> Undefined property: stdClass::$image D:\xampp\htdocs\coreigniter_4\application\views\dashboard_setting.php 273
+ERROR - 2023-11-13 06:24:35 --> Severity: Warning --> Undefined property: stdClass::$product D:\xampp\htdocs\coreigniter_4\application\views\dashboard_setting.php 282
+ERROR - 2023-11-13 06:24:35 --> Severity: Warning --> Undefined property: stdClass::$price D:\xampp\htdocs\coreigniter_4\application\views\dashboard_setting.php 291
+ERROR - 2023-11-13 06:24:35 --> Severity: Warning --> Undefined property: stdClass::$image D:\xampp\htdocs\coreigniter_4\application\views\dashboard_setting.php 273
+ERROR - 2023-11-13 06:24:35 --> Severity: Warning --> Undefined property: stdClass::$product D:\xampp\htdocs\coreigniter_4\application\views\dashboard_setting.php 282
+ERROR - 2023-11-13 06:24:35 --> Severity: Warning --> Undefined property: stdClass::$price D:\xampp\htdocs\coreigniter_4\application\views\dashboard_setting.php 291
+ERROR - 2023-11-13 06:24:35 --> Severity: Warning --> Undefined property: stdClass::$image D:\xampp\htdocs\coreigniter_4\application\views\dashboard_setting.php 273
+ERROR - 2023-11-13 06:24:35 --> Severity: Warning --> Undefined property: stdClass::$product D:\xampp\htdocs\coreigniter_4\application\views\dashboard_setting.php 282
+ERROR - 2023-11-13 06:24:35 --> Severity: Warning --> Undefined property: stdClass::$price D:\xampp\htdocs\coreigniter_4\application\views\dashboard_setting.php 291
+ERROR - 2023-11-13 06:24:35 --> Severity: Warning --> Undefined property: stdClass::$image D:\xampp\htdocs\coreigniter_4\application\views\dashboard_setting.php 273
+ERROR - 2023-11-13 06:24:35 --> Severity: Warning --> Undefined property: stdClass::$product D:\xampp\htdocs\coreigniter_4\application\views\dashboard_setting.php 282
+ERROR - 2023-11-13 06:24:35 --> Severity: Warning --> Undefined property: stdClass::$price D:\xampp\htdocs\coreigniter_4\application\views\dashboard_setting.php 291
+ERROR - 2023-11-13 06:24:35 --> Severity: Warning --> Undefined property: stdClass::$image D:\xampp\htdocs\coreigniter_4\application\views\dashboard_setting.php 273
+ERROR - 2023-11-13 06:24:35 --> Severity: Warning --> Undefined property: stdClass::$product D:\xampp\htdocs\coreigniter_4\application\views\dashboard_setting.php 282
+ERROR - 2023-11-13 06:24:35 --> Severity: Warning --> Undefined property: stdClass::$price D:\xampp\htdocs\coreigniter_4\application\views\dashboard_setting.php 291
+ERROR - 2023-11-13 06:24:36 --> Severity: Warning --> Undefined property: stdClass::$image D:\xampp\htdocs\coreigniter_4\application\views\dashboard_setting.php 273
+ERROR - 2023-11-13 06:24:36 --> Severity: Warning --> Undefined property: stdClass::$product D:\xampp\htdocs\coreigniter_4\application\views\dashboard_setting.php 282
+ERROR - 2023-11-13 06:24:36 --> Severity: Warning --> Undefined property: stdClass::$price D:\xampp\htdocs\coreigniter_4\application\views\dashboard_setting.php 291
+ERROR - 2023-11-13 06:24:36 --> Severity: Warning --> Undefined property: stdClass::$image D:\xampp\htdocs\coreigniter_4\application\views\dashboard_setting.php 273
+ERROR - 2023-11-13 06:24:36 --> Severity: Warning --> Undefined property: stdClass::$product D:\xampp\htdocs\coreigniter_4\application\views\dashboard_setting.php 282
+ERROR - 2023-11-13 06:24:36 --> Severity: Warning --> Undefined property: stdClass::$price D:\xampp\htdocs\coreigniter_4\application\views\dashboard_setting.php 291
+ERROR - 2023-11-13 06:24:36 --> Severity: Warning --> Undefined property: stdClass::$image D:\xampp\htdocs\coreigniter_4\application\views\dashboard_setting.php 273
+ERROR - 2023-11-13 06:24:36 --> Severity: Warning --> Undefined property: stdClass::$product D:\xampp\htdocs\coreigniter_4\application\views\dashboard_setting.php 282
+ERROR - 2023-11-13 06:24:36 --> Severity: Warning --> Undefined property: stdClass::$price D:\xampp\htdocs\coreigniter_4\application\views\dashboard_setting.php 291
